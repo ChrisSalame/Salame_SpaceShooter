@@ -55,10 +55,13 @@ public class Player : MonoBehaviour
             transform.position -= VelocityTwo * Time.deltaTime;
         }
 
-        //if((Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.DownArrow)) == false)
-        //{
-            //acceleration -= Time.deltaTime;
-        //}
+
+
+
+        else
+        {
+            targetSpeed -= acceleration;
+        }
 
 
     }
