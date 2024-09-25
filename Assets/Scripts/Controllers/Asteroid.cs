@@ -11,10 +11,25 @@ public class Asteroid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        AsteroidMovement();
     }
+
+    public void AsteroidMovement()
+    {
+        Vector3 randMovementPace = new Vector3(Random.Range(-1, 2), Random.Range(-1, 2));
+
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + randMovementPace, moveSpeed);
+
+
+
+    }
+
+
+
 }
