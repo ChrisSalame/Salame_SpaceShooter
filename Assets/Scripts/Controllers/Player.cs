@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -18,6 +19,9 @@ public class Player : MonoBehaviour
     private float timeToReachSpeed = 3f;
     private float targetSpeed = 2f;
 
+    public List<float> points = new List<float> ();
+    int circlePointIndex = 0;
+
     private void Start()
     {
         acceleration = targetSpeed / timeToReachSpeed;
@@ -29,6 +33,8 @@ public class Player : MonoBehaviour
         {
             targetSpeed = 2;
         }
+
+        EnemyRadar(1,1);
     }
 
 
@@ -55,16 +61,44 @@ public class Player : MonoBehaviour
             transform.position -= VelocityTwo * Time.deltaTime;
         }
 
-
-
-
         else
         {
             targetSpeed -= acceleration;
         }
 
+    }
+
+    public void EnemyRadar(float radius, int circlePoints)
+    {
+
+        float currentPoint = 360 / circlePoints;
+
+        for (int index = 0; index <= circlePoints; index++) 
+        {
+            points.Add(currentPoint * index);
+
+            for (int numberOfPoints = 1; numberOfPoints < points.Count; numberOfPoints ++) 
+            {
+
+            
+            }
+        }
+
+
+
+
+        Vector3 playerCentre = transform.position;
+
+        float circleXPoint = Mathf.Cos(currentPoint * Mathf.Deg2Rad);
+        float circleYPoint = Mathf.Sin(currentPoint * Mathf.Deg2Rad);
+        Vector3 circlePointPosition = (new Vector3(circleXPoint, circleYPoint)) * radius;
+
+        Debug.DrawLine(playerCentre, circlePointPosition * radius, Color.green);
+
 
     }
 
 
+
 }
+
