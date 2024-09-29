@@ -19,8 +19,11 @@ public class Player : MonoBehaviour
     private float timeToReachSpeed = 3f;
     private float targetSpeed = 2f;
 
-    public List<float> points = new List<float> ();
     int circlePointIndex = 0;
+
+    public int numberOfSides;
+    Color radarColor = Color.green;
+
 
     private void Start()
     {
@@ -34,7 +37,7 @@ public class Player : MonoBehaviour
             targetSpeed = 2;
         }
 
-        EnemyRadar(1,1);
+        EnemyRadar(1,numberOfSides);
     }
 
 
@@ -72,6 +75,7 @@ public class Player : MonoBehaviour
     {
 
         float currentPoint = 360 / circlePoints;
+        List<float> points = new List<float>();
 
         for (int index = 0; index <= circlePoints; index++) 
         {
@@ -79,21 +83,23 @@ public class Player : MonoBehaviour
 
             for (int numberOfPoints = 1; numberOfPoints < points.Count; numberOfPoints ++) 
             {
+               
+                Vector3 startPoint = transform.position + new Vector3(Mathf.Cos(points[numberOfPoints - 1] * Mathf.Deg2Rad * radius), Mathf.Sin(points[numberOfPoints - 1] * Mathf.Deg2Rad * radius));
+                Vector3 endPoint = transform.position + new Vector3(Mathf.Cos(points[numberOfPoints ] * Mathf.Deg2Rad * radius), Mathf.Sin(points[numberOfPoints] * Mathf.Deg2Rad * radius));
 
-            
+                Debug.DrawLine(startPoint, endPoint, radarColor);
             }
         }
+                if (Vector3.Distance(transform.position, enemyTransform.position) <= radius)
 
+                {
+                     radarColor = Color.red;
+                }
+                else 
+                {
+                    radarColor = Color.green;
+                }
 
-
-
-        Vector3 playerCentre = transform.position;
-
-        float circleXPoint = Mathf.Cos(currentPoint * Mathf.Deg2Rad);
-        float circleYPoint = Mathf.Sin(currentPoint * Mathf.Deg2Rad);
-        Vector3 circlePointPosition = (new Vector3(circleXPoint, circleYPoint)) * radius;
-
-        Debug.DrawLine(playerCentre, circlePointPosition * radius, Color.green);
 
 
     }
