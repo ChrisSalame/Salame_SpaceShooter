@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public Transform enemyTransform;
     public GameObject bombPrefab;
     public Transform bombsTransform;
+    public GameObject PowerUpPrefab;
 
     private Vector3 VelocityOne = Vector3.zero;
     private Vector3 VelocityTwo = Vector3.zero;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     public int numberOfSides;
     Color radarColor = Color.green;
 
+    public int powerUpCount;
 
     private void Start()
     {
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
         }
 
         EnemyRadar(1,numberOfSides);
+        SpawnPowerups(1,powerUpCount);
     }
 
 
@@ -102,6 +105,33 @@ public class Player : MonoBehaviour
 
 
 
+    }
+
+
+    public void SpawnPowerups(float radius, int numberOfPowerups) 
+    {
+        float powerUpArea = 360 / numberOfPowerups;
+
+        List<float> amountOfPU = new List<float>();
+
+        for (int index = 0; index <= numberOfPowerups; index++)
+        {
+            amountOfPU.Add(powerUpArea * index);
+
+            for (int numPU = 1; numPU < amountOfPU.Count; numPU++)
+            {
+
+                Vector3 PUpointX = transform.position + new Vector3(Mathf.Cos(amountOfPU[numPU - 1] * Mathf.Deg2Rad * radius), Mathf.Sin(amountOfPU[numPU - 1] * Mathf.Deg2Rad * radius));
+
+                if (Input.GetKeyDown("p"))
+                {
+                    Instantiate(PowerUpPrefab, PUpointX, Quaternion.identity);
+
+                }
+
+            }
+        }
+    
     }
 
 
