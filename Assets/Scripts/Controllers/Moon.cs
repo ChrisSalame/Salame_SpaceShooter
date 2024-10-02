@@ -6,15 +6,18 @@ public class Moon : MonoBehaviour
 {
     public Transform planetTransform;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float radius;
+    public float speed;
 
-    // Update is called once per frame
+
     void Update()
     {
+        OrbitalMotion(radius,speed, planetTransform);
+    }
 
+    public void OrbitalMotion(float radius, float speed, Transform target) 
+    {
+        transform.RotateAround(target.transform.position, Vector3.forward, speed * Time.deltaTime);
+    
     }
 }
