@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
         EnemyRadar(1,numberOfSides);
         SpawnPowerups(1,powerUpCount);
+        spawnBomb();
     }
 
 
@@ -103,6 +104,27 @@ public class Player : MonoBehaviour
                     radarColor = Color.green;
                 }
 
+
+
+    }
+
+
+
+    public void spawnBomb() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            Instantiate(bombPrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+
+            print("space was pressed");
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            //Destroy(this.gameObject);
+
+            print("bomb destroyed");
+        }
 
 
     }

@@ -22,7 +22,7 @@ public class LookAt : MonoBehaviour
 
         float deltaAngle = Mathf.DeltaAngle(facingAngle, targetAngle);
 
-        Debug.Log(deltaAngle);
+        //Debug.Log(deltaAngle);
         Debug.DrawLine(transform.position, transform.position + transform.up, Color.red);
         Debug.DrawLine(transform.position, targetDirection + transform.position, Color.blue);
 
