@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -95,7 +96,6 @@ public class Player : MonoBehaviour
             }
         }
                 if (Vector3.Distance(transform.position, enemyTransform.position) <= radius)
-
                 {
                      radarColor = Color.red;
                 }
@@ -103,6 +103,12 @@ public class Player : MonoBehaviour
                 {
                     radarColor = Color.green;
                 }
+
+        if (Vector3.Distance(transform.position, enemyTransform.position) <= (radius /2))
+        {
+            Destroy(gameObject);
+            print("GAME OVER");
+        }
 
 
 
@@ -118,15 +124,6 @@ public class Player : MonoBehaviour
 
             print("space was pressed");
         }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            //Destroy(this.gameObject);
-
-            print("bomb destroyed");
-        }
-
-
     }
 
 
