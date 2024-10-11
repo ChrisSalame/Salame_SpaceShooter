@@ -11,9 +11,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector2 (transform.position.x + speed, transform.position.y) ;
-
-
-
         if (transform.position.x >= 20) 
         {
             speed = -speed;
@@ -24,5 +21,9 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
+
+
+
 
 }
