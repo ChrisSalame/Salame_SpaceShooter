@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
     private float timeToReachSpeed = 3f;
     private float targetSpeed = 2f;
 
-    int circlePointIndex = 0;
-
     public int numberOfSides;
     Color radarColor = Color.green;
 
