@@ -3270,7 +3270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4408196811525658, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.22
+      value: 9.87
       objectReference: {fileID: 0}
     - target: {fileID: 4408196811525658, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3372,6 +3372,14 @@ PrefabInstance:
       propertyPath: points.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: HomingMisslePrefab
+      value: 
+      objectReference: {fileID: 4871648644786788, guid: 561200a1f15bfaa449ccc4cb56a3a980, type: 3}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: homingMisslePrefab
+      value: 
+      objectReference: {fileID: 4871648644786788, guid: 561200a1f15bfaa449ccc4cb56a3a980, type: 3}
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: numberOfTrailBombs
       value: 3

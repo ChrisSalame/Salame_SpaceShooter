@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public Transform bombsTransform;
     public GameObject PowerUpPrefab;
 
+    public Transform homingMisslePrefab;
+
     private Vector3 VelocityOne = Vector3.zero;
     private Vector3 VelocityTwo = Vector3.zero;
 
@@ -28,6 +30,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+
+        //FindAnyObjectOfType<Missile>();
+        //HomingMisslePrefab = FindAnyObjectOfType<Missile>().transform;
+        FindObjectOfType<Missile>();
+        homingMisslePrefab = FindObjectOfType<Missile>().transform;
+
+
         acceleration = targetSpeed / timeToReachSpeed;
     }
     void Update()
@@ -93,7 +102,7 @@ public class Player : MonoBehaviour
                 Debug.DrawLine(startPoint, endPoint, radarColor);
             }
         }
-                if (Vector3.Distance(transform.position, enemyTransform.position) <= radius)
+                if (Vector3.Distance(transform.position, enemyTransform.position) <= radius + 1)
                 {
                      radarColor = Color.red;
                 }
@@ -105,11 +114,13 @@ public class Player : MonoBehaviour
         if (Vector3.Distance(transform.position, enemyTransform.position) <= (radius /2))
         {
             Destroy(gameObject);
-            print("GAME OVER");
+            print("GAME OVER: CRASHED SHIP");
         }
-
-
-
+        if (Vector3.Distance(transform.position, homingMisslePrefab.position) <= radius + 5)
+        {
+            Destroy(gameObject);
+            print("GAME OVER: HIT BY MISSILE");
+        }
     }
 
 
