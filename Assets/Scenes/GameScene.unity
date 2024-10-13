@@ -3385,6 +3385,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: homingMisslePosition
+      value: 
+      objectReference: {fileID: 4871648644786788, guid: 561200a1f15bfaa449ccc4cb56a3a980, type: 3}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: asteroidTransforms.Array.size
       value: 20
       objectReference: {fileID: 0}

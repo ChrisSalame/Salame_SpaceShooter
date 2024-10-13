@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Transform bombsTransform;
     public GameObject PowerUpPrefab;
 
-    public Transform homingMisslePrefab;
+    public Transform homingMisslePosition;
 
     private Vector3 VelocityOne = Vector3.zero;
     private Vector3 VelocityTwo = Vector3.zero;
@@ -31,10 +31,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
 
-        //FindAnyObjectOfType<Missile>();
-        //HomingMisslePrefab = FindAnyObjectOfType<Missile>().transform;
-        FindObjectOfType<Missile>();
-        homingMisslePrefab = FindObjectOfType<Missile>().transform;
 
 
         acceleration = targetSpeed / timeToReachSpeed;
@@ -47,8 +43,8 @@ public class Player : MonoBehaviour
             targetSpeed = 2;
         }
 
-        EnemyRadar(1,numberOfSides);
-        SpawnPowerups(1,powerUpCount);
+        EnemyRadar(1, numberOfSides);
+        SpawnPowerups(1, powerUpCount);
         spawnBomb();
     }
 
@@ -89,34 +85,34 @@ public class Player : MonoBehaviour
         float currentPoint = 360 / circlePoints;
         List<float> points = new List<float>();
 
-        for (int index = 0; index <= circlePoints; index++) 
+        for (int index = 0; index <= circlePoints; index++)
         {
             points.Add(currentPoint * index);
 
-            for (int numberOfPoints = 1; numberOfPoints < points.Count; numberOfPoints ++) 
+            for (int numberOfPoints = 1; numberOfPoints < points.Count; numberOfPoints++)
             {
-               
+
                 Vector3 startPoint = transform.position + new Vector3(Mathf.Cos(points[numberOfPoints - 1] * Mathf.Deg2Rad * radius), Mathf.Sin(points[numberOfPoints - 1] * Mathf.Deg2Rad * radius));
-                Vector3 endPoint = transform.position + new Vector3(Mathf.Cos(points[numberOfPoints ] * Mathf.Deg2Rad * radius), Mathf.Sin(points[numberOfPoints] * Mathf.Deg2Rad * radius));
+                Vector3 endPoint = transform.position + new Vector3(Mathf.Cos(points[numberOfPoints] * Mathf.Deg2Rad * radius), Mathf.Sin(points[numberOfPoints] * Mathf.Deg2Rad * radius));
 
                 Debug.DrawLine(startPoint, endPoint, radarColor);
             }
         }
-                if (Vector3.Distance(transform.position, enemyTransform.position) <= radius + 1)
-                {
-                     radarColor = Color.red;
-                }
-                else 
-                {
-                    radarColor = Color.green;
-                }
+        if (Vector3.Distance(transform.position, enemyTransform.position) <= radius + 1)
+        {
+            radarColor = Color.red;
+        }
+        else
+        {
+            radarColor = Color.green;
+        }
 
-        if (Vector3.Distance(transform.position, enemyTransform.position) <= (radius /2))
+        if (Vector3.Distance(transform.position, enemyTransform.position) <= (radius / 2))
         {
             Destroy(gameObject);
             print("GAME OVER: CRASHED SHIP");
         }
-        if (Vector3.Distance(transform.position, homingMisslePrefab.position) <= radius + 5)
+        if (Vector3.Distance(transform.position, homingMisslePosition.position) <= radius + 5)
         {
             Destroy(gameObject);
             print("GAME OVER: HIT BY MISSILE");
@@ -125,9 +121,9 @@ public class Player : MonoBehaviour
 
 
 
-    public void spawnBomb() 
+    public void spawnBomb()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bombPrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
 
@@ -136,7 +132,7 @@ public class Player : MonoBehaviour
     }
 
 
-    public void SpawnPowerups(float radius, int numberOfPowerups) 
+    public void SpawnPowerups(float radius, int numberOfPowerups)
     {
         float powerUpArea = 360 / numberOfPowerups;
 
@@ -159,7 +155,7 @@ public class Player : MonoBehaviour
 
             }
         }
-    
+
     }
 
 
