@@ -37,7 +37,6 @@ public class Enemy : MonoBehaviour
         Vector2 targetLookAt = player.transform.position - transform.position;
         targetLookAt.Normalize();
         float targetLookAtAngle = Mathf.Atan2(targetLookAt.y, targetLookAt.x) * Mathf.Rad2Deg;
-
         transform.rotation = Quaternion.Euler(Vector3.forward * targetLookAtAngle);
 
     }
