@@ -7,13 +7,16 @@ public class Enemy : MonoBehaviour
 
     float timer = 0;
     public GameObject HomingMisslePrefab;
-
     public float speed;
+
+    public Transform player;
+    public float angularSpeed;
 
     private void Start()
     {
 
     }
+
     private void Update()
     {
         transform.position = new Vector2(transform.position.x + speed, transform.position.y);
@@ -26,7 +29,16 @@ public class Enemy : MonoBehaviour
             speed = -speed;
         }
         spawnMissleTimer();
+        rotate();
+
     }
+
+    public void rotate()
+    {
+        trans
+
+    }
+
 
     public void spawnMissleTimer()
     {
